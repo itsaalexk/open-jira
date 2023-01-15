@@ -25,7 +25,7 @@ export const SideBar = () => {
             {menuItems.map((text,index)=>{
                 return(
                     <ListItem key={text}>
-                        <ListItemIcon>
+                        <ListItemIcon> 
                             {index % 2 === 0 ? <InboxRoundedIcon /> : <EmailRoundedIcon />}
                         </ListItemIcon>
                         <ListItemText primary={text} />
