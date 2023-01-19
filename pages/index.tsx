@@ -4,6 +4,7 @@ import { Grid, Card, CardHeader, CardContent, CardActionArea } from '@mui/materi
 import { NextPage } from 'next'
 import { Layout } from '../components/layouts/Layout';
 import { EntryList } from '../components/ui';
+import { NewEntry } from '../components/ui/NewEntry';
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -16,7 +17,7 @@ const Home: NextPage = () => {
               <Grid item xs={12} sm ={4}>
                   <Card sx={{height:"90vh"}}>
                     <CardHeader title="Pendientes" />
-                      <CardContent>
+                      <NewEntry />                      <CardContent>
                         <EntryList status="pending"/>
                       </CardContent>
                   </Card>

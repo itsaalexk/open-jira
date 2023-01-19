@@ -13,9 +13,9 @@ export const EntryList:FC<Props> = ({status}) => {
  const {entries} = useContext(EntriesContext);
  console.log(entries)
 
- const entriesByStatus = useMemo(()=>{entries.filter(entry => entry.status === status)},[entries])
-
-
+ const entriesByStatus = useMemo(()=>entries.filter(entry => entry.status === status),[entries])
+  
+  
 
   return (
     //TODO: AQUI SE VA A HACER UN DROP
