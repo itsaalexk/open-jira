@@ -1,6 +1,6 @@
 
 import { Inter } from '@next/font/google'
-import { Grid,Card, CardHeader, CardContent } from '@mui/material'
+import { Grid, Card, CardHeader, CardContent, CardActionArea } from '@mui/material';
 import { NextPage } from 'next'
 import { Layout } from '../components/layouts/Layout';
 import { EntryList } from '../components/ui';
@@ -16,21 +16,21 @@ const Home: NextPage = () => {
               <Grid item xs={12} sm ={4}>
                   <Card sx={{height:"90vh"}}>
                     <CardHeader title="Pendientes" />
-
                       <CardContent>
-                        <EntryList></EntryList>
+                        <EntryList status="pending"/>
                       </CardContent>
                   </Card>
               </Grid>
               <Grid item xs={12} sm ={4}>
                   <Card sx={{height:"90vh"}}>
                     <CardHeader title="En Proceso" />
+                    <EntryList status="in-progress"/>
                   </Card>
               </Grid>
               <Grid item xs={12} sm ={4}>
                   <Card sx={{height:"90vh"}}>
                     <CardHeader title="Completadas" />
-                    
+                    <EntryList status="finished"/>
                   </Card>
               </Grid>
           </Grid>

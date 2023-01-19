@@ -12,19 +12,19 @@ const Entries_INITIAL_STATE: EntriesState ={
     entries: [
         {
             _id:uuidv4(),
-            description: "Descripcion de la tarea por hacer",
+            description: "Pendiente",
             status: "pending",
             createdAt: Date.now()
         },
         {
             _id:uuidv4(),
-            description: "Descripcion de la tarea por hacer 2",
+            description: "En progreso",
             status: "in-progress",
             createdAt: Date.now() *2
         },
         {
             _id:uuidv4(),
-            description: "Descripcion de la tarea por hacer 3",
+            description: "Terminada",
             status: "finished",
             createdAt: Date.now() *3
         }
