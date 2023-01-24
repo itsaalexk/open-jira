@@ -3,6 +3,7 @@ import { Button, Box, TextField } from '@mui/material';
 import SaveAltIcon from '@mui/icons-material/SaveAlt';
 import CancelIcon from '@mui/icons-material/Cancel';
 import { EntriesContext } from '../../context/entries/EntriesContext';
+import { UIContext } from '../../context/ui/UIContext';
 
 
 
@@ -14,8 +15,12 @@ interface Props {
 
 export const ShowField:FC<Props> = ({ setShowText}) => {
 
+
+
     const [inputValue, setInputValue]= useState('')
-   const {addNewEntry} = useContext(EntriesContext)
+    const {addNewEntry} = useContext(EntriesContext)
+    const {isAddingEntry, setIsAddingEntry} = useContext(UIContext)
+    
     
 
     const onHandleClick = () =>{
@@ -27,6 +32,9 @@ export const ShowField:FC<Props> = ({ setShowText}) => {
         if (inputValue.length === 0 ) return
         console.log(inputValue)
         addNewEntry(inputValue)
+        setShowText(false)
+        setInputValue('')
+       
     }
 
 
