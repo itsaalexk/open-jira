@@ -1,8 +1,9 @@
-import { FC, useState } from 'react';
+import { ChangeEvent, FC, useState, useContext } from 'react';
 import { Button, Box, TextField } from '@mui/material';
 import SaveAltIcon from '@mui/icons-material/SaveAlt';
 import CancelIcon from '@mui/icons-material/Cancel';
-import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore';
+import { EntriesContext } from '../../context/entries/EntriesContext';
+
 
 
 
@@ -13,30 +14,46 @@ interface Props {
 
 export const ShowField:FC<Props> = ({ setShowText}) => {
 
-    const {error, setError} = useState<Boolean>(false)
-    const {form , setForm} = useState<String>("")
+    const [inputValue, setInputValue]= useState('')
+   const {addNewEntry} = useContext(EntriesContext)
+    
 
     const onHandleClick = () =>{
         setShowText(false)
+        
+    }
+
+    const onSave = ()=>{
+        if (inputValue.length === 0 ) return
+        console.log(inputValue)
+        addNewEntry(inputValue)
     }
 
 
-    const onHandleError = ({e}) =>{
-        if (e.target.value.length === 0) {setError(true)}
-    }
 
-    const handleChange = ({target:{value}})=>{
-        setForm(value)
-        console.log(form)
+    const onChange = ({target:{value}}:ChangeEvent<HTMLInputElement>)=>{
+        setInputValue(value)
+         
+        
     }
   return (
     <>
-    <TextField onChange ={handleChange} fullWidth sx ={{marginTop:2, marginBottom: 1}} placeholder ="Nueva Entrada" autofocus multiline label ="Nueva Entrada" helperText ={error && "Ingrese un texto"} error={setError}/>
+    <TextField  
+        value={inputValue} 
+        onChange ={onChange} 
+        fullWidth sx ={{marginTop:2, marginBottom: 1}} 
+        placeholder ="Nueva Entrada" 
+        autoFocus 
+        multiline 
+        label ="Nueva Entrada" 
+        helperText ={inputValue.length === 0  && 'Ingrese un valor'} 
+        error={inputValue.length === 0 }
+    />
     <Box display ="flex" justifyContent ="space-between">
         <Button onClick={onHandleClick} variant ="text" color ="error" endIcon={<CancelIcon />}>
             Cancelar
         </ Button>
-        <Button onClick ={onHandleError} variant ="outlined" color ="secondary" endIcon={<SaveAltIcon />}>
+        <Button onClick={onSave} variant ="outlined" color ="secondary" endIcon={<SaveAltIcon />}>
             Guardar
         </ Button>
     </Box>
