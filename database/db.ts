@@ -9,7 +9,7 @@ const mongooseConnection = {
 
 export const connectDB = async()=>{
     if (mongooseConnection.isConnected){
-        console.log('Conectado');
+        console.log('Ya estabamos conectados con la base de datos');
         return;
     }
     if (mongoose.connections.length > 0){
@@ -27,9 +27,9 @@ export const connectDB = async()=>{
 
 }
 
-export const disconnect = async()=>{
+export const disconnectDB = async()=>{
 
-    if(mongooseConnection.isConnected !== 0) return
+    if(mongooseConnection.isConnected === 0) return
 
     await mongoose.disconnect()
     console.log('Base de datos desconectada')
