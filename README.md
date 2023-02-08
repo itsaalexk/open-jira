@@ -7,7 +7,6 @@
 * El -d significa __detached__d
 
 
-
 MongoDB local URL:
 
 ```
